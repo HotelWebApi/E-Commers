@@ -5,8 +5,6 @@ VisualStudioVersion = 17.8.34205.153
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trainers", "Trainers.csproj", "{64214E9C-1FDB-458D-AF82-98A18AA56524}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "..\DataAccessLayer\DataAccessLayer.csproj", "{84E5216A-7B0E-4DD4-B7DB-DC2D0492C120}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{64214E9C-1FDB-458D-AF82-98A18AA56524}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64214E9C-1FDB-458D-AF82-98A18AA56524}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64214E9C-1FDB-458D-AF82-98A18AA56524}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84E5216A-7B0E-4DD4-B7DB-DC2D0492C120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84E5216A-7B0E-4DD4-B7DB-DC2D0492C120}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84E5216A-7B0E-4DD4-B7DB-DC2D0492C120}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84E5216A-7B0E-4DD4-B7DB-DC2D0492C120}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
