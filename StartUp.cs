@@ -14,6 +14,8 @@ using DataAccessLayer.Interfaces;
 using DataAccessLayer.Entity;
 using DataAccessLayer.Repositories;
 using DataAccessLayer.Services;
+using Trainers.Services;
+using Trainers.Interfaces;
 
 namespace Web;
 
@@ -143,16 +145,16 @@ public static class Startup
 
         #region Custom DI Services
 
-        //services.AddTransient<IIdentityService, IdentityService>();
+        services.AddTransient<IIdentityService, IdentityService>();
         #endregion
 
         #region Services and Repositories
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddScoped<ITrainerRepository, TrainerRepository>();
-        //services.AddScoped<IAdminService, AdminService>();
+        services.AddScoped<IAdminService, AdminService>();
         services.AddTransient<ITrainerService, TrainerService>();
-        //services.AddScoped<IUserRegisterService, UserRegisterService>();
+        services.AddScoped<IUserService, UserService>();
         #endregion
     }
 
