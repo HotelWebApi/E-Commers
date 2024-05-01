@@ -43,6 +43,57 @@ public class TrainerController(ITrainerService trainerservice) : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+    [HttpGet("filter/color")]
+    public async Task<IActionResult> FilterColor(string color)
+    {
+        try
+        {
+            var filter = await _trainerservice.FilterByColorAsync(color);
+            return Ok(filter);
+        }
+        catch (ArgumentNullException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+    [HttpGet("filter/brand")]
+    public async Task<IActionResult> FilterBrand(string brand)
+    {
+        try
+        {
+            var filter = await _trainerservice.FilterByBrandAsync(brand);
+            return Ok(filter);
+        }
+        catch (ArgumentNullException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+    [HttpGet("filter/price")]
+    public async Task<IActionResult> FilterPrice(decimal minPrice, decimal maxPrice)
+    {
+        try
+        {
+            var filter = await _trainerservice.FilterByPriceAsync(minPrice, maxPrice);
+            return Ok(filter);
+        }
+        catch (ArgumentNullException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
     [HttpPost("Add")]
     public async Task<IActionResult> Add(AddTrainerDto addTrainer)
     {
