@@ -21,12 +21,13 @@ public class BotController : ControllerBase
         _botClient = new TelegramBotClient(TelegramBotToken);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> SendMessage([FromBody] string message)
+    [HttpPost("ToAdmin")]
+    public async Task<IActionResult> SendMessage(string gmail, string message)
     {
         try
         {
             string userData = $"Message: {message}";
+            string usergmail = $"The gmail: {gmail}";
 
             using (var client = new HttpClient())
             {
@@ -35,13 +36,12 @@ public class BotController : ControllerBase
                 var messageData = new
                 {
                     chat_id = AdminChatId,
-                    text = userData
+                    text = $"{usergmail}\n{userData}"
                 };
-
                 var response = await client.PostAsJsonAsync(telegramAPI, messageData);
                 if (response.IsSuccessStatusCode)
                 {
-                    await SendEmailAsync(AdminEmail, "User Message", message);
+                    await SendEmailAsync(AdminEmail, "User Message", $"{usergmail}\n{userData}");
                     return Ok(new { Message = "Message sent successfully." });
                 }
                 else
@@ -57,6 +57,19 @@ public class BotController : ControllerBase
         }
     }
 
+    [HttpPost]
+    public async Task<IActionResult> SendMessageToUser(string gmail, string message)
+    {
+        try
+        {
+            await SendEmailAsync(gmail, "Response from a admin", message);
+            return Ok(new { Message = "Message sent successfully." });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 
     private async Task SendEmailAsync(string toEmail, string subject, string body)
     {
@@ -75,5 +88,10 @@ public class BotController : ControllerBase
 
             await client.SendMailAsync(mailMessage);
         }
+    }
+    private void SendMessageFromBotByAdmin(string gmail, string message)
+    {
+        _botClient.SendTextMessageAsync(gmail, message);
+
     }
 }
