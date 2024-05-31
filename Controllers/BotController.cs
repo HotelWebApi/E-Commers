@@ -41,7 +41,7 @@ public class BotController : ControllerBase
                 var response = await client.PostAsJsonAsync(telegramAPI, messageData);
                 if (response.IsSuccessStatusCode)
                 {
-                    //await SendEmailAsync(AdminEmail, "User Message", $"{usergmail}\n{userData}");
+                    await SendEmailAsync(AdminEmail, "User Message", $"{usergmail}\n{userData}");
                     return Ok(new { Message = "Message sent successfully." });
                 }
                 else
